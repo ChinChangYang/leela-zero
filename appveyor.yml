@@ -27,6 +27,7 @@ install:
 cache: msvc\packages -> appveyor.yml
 build_script:
 - cmd: if "%cmake_build%"=="1" msvc\VS2017\cmake_build.bat
+- cmd: if "%msbuild%"=="1" git submodule update --init --recursive
 - cmd: if "%msbuild%"=="1" msbuild /t:build msvc\VS2017\leela-zero.vcxproj
 
 test_script:
