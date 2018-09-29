@@ -1,5 +1,7 @@
 version: '{build}'
-image: Visual Studio 2017
+image:
+- Visual Studio 2017
+- Visual Studio 2015
 configuration: Release
 platform: x64
 matrix:
@@ -22,13 +24,24 @@ skip_commits:
     - training/
     - AUTHORS
     - COPYING
-install:
-- cmd: nuget restore msvc\VS2017 -PackagesDirectory msvc\packages
-cache: msvc\packages -> appveyor.yml
+for:
+- matrix:
+    only:
+    - image: Visual Studio 2015
+  install:
+  - cmd: set MSVCDIR="msvc\VS2015" && nuget restore %MSVCDIR% -PackagesDirectory msvc\packages
+for:
+- matrix:
+    only:
+    - image: Visual Studio 2017
+  install:
+  - cmd: set MSVCDIR="msvc\VS2017" && nuget restore %MSVCDIR% -PackagesDirectory msvc\packages
 build_script:
-- cmd: if "%cmake_build%"=="1" msvc\VS2017\cmake_build.bat
+- cmd: if "%cmake_build%"=="1" %MSVCDIR%\cmake_build.bat
 - cmd: if "%msbuild%"=="1" git submodule update --init --recursive
-- cmd: if "%msbuild%"=="1" msbuild /t:build msvc\VS2017\leela-zero.vcxproj
+- cmd: if "%msbuild%"=="1" msbuild /t:build %MSVCDIR%\leela-zero.vcxproj
 
 test_script:
 - cmd: if "%run_tests%"=="1" cd build && Release\tests.exe
+
+cache: msvc\packages -> appveyor.yml
