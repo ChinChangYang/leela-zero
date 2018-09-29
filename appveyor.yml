@@ -30,7 +30,6 @@ for:
     - image: Visual Studio 2015
   install:
   - cmd: set MSVCDIR="msvc\VS2015" && nuget restore %MSVCDIR% -PackagesDirectory msvc\packages
-for:
 - matrix:
     only:
     - image: Visual Studio 2017
