@@ -29,12 +29,16 @@ for:
     only:
     - image: Visual Studio 2015
   install:
-  - cmd: set MSVCDIR="msvc\VS2015"; echo %MSVCDIR%; nuget restore %MSVCDIR% -PackagesDirectory msvc\packages
+  - cmd: set MSVCDIR=msvc\VS2015
+  - cmd: echo %MSVCDIR%
+  - cmd: nuget restore %MSVCDIR% -PackagesDirectory msvc\packages
 - matrix:
     only:
     - image: Visual Studio 2017
   install:
-  - cmd: set MSVCDIR="msvc\VS2017"; echo %MSVCDIR%; nuget restore %MSVCDIR% -PackagesDirectory msvc\packages
+  - cmd: set MSVCDIR=msvc\VS2017
+  - cmd: echo %MSVCDIR%
+  - cmd: nuget restore %MSVCDIR% -PackagesDirectory msvc\packages
 build_script:
 - cmd: if "%cmake_build%"=="1" %MSVCDIR%\cmake_build.bat
 - cmd: if "%msbuild%"=="1" git submodule update --init --recursive
