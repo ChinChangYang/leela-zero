@@ -9,8 +9,8 @@ cmake -G "Visual Studio 14 2015 Win64" %DEFINES% ^
       -DBOOST_ROOT="C:/Libraries/boost_1_65_1"   ^
       -DBOOST_LIBRARYDIR="C:/Libraries/boost_1_65_1/lib64-msvc-14.1" ^
       -DBoost_USE_STATIC_LIBS=ON                 ^
-      -DZLIB_ROOT="%PKG_FOLDER%/zlib-msvc14-x64.1.2.11.8900/build/native" ^
-      -DZLIB_LIBRARY="%PKG_FOLDER%/zlib-msvc14-x64.1.2.11.8900/build/native/zlib-msvc14-x64.targets" ^
+      -DZLIB_ROOT="%PKG_FOLDER%/zlib-msvc14-x64.1.2.11.7795/build/native" ^
+      -DZLIB_LIBRARY="%PKG_FOLDER%/zlib-msvc14-x64.1.2.11.7795/build/native/zlib-msvc14-x64.targets" ^
       -DOpenCL_LIBRARY="%PKG_FOLDER%/opencl-nug.0.777.12/build/native/opencl-nug.targets" ^
       -DOpenCL_INCLUDE_DIR="%PKG_FOLDER%/opencl-nug.0.777.12/build/native/include" ^
       -DBLAS_LIBRARIES="%PKG_FOLDER%/OpenBLAS.0.2.14.1/build/native/openblas.targets" ^
